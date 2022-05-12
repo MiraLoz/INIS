@@ -108,6 +108,16 @@ for (let i = 0; i < draggableElements.length; i++) {
   }
   )
 
+  draggableElements[i].addEventListener('dblclick', (e) => {
+    if (e.target.style.background == 'yellow') {
+      workSpace.ontouchmove = (e) => {
+        draggableElements[i].style.top = e.targetTouches[0].pageY - draggableElements[i].offsetHeight / 2 + 'px';
+        draggableElements[i].style.left = e.targetTouches[0].pageX - draggableElements[i].offsetWidth / 2 + 'px';
+      }
+    }
+  }
+  )
+
   draggableElements[i].addEventListener('touchend', (e) => {
     console.log("Touch end!");
     if (e.targetTouches.length == 2) {
